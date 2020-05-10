@@ -11,6 +11,7 @@ export const clearResults = () => {
   elements.searchPagination.innerHTML = '';
 };
 
+
 export const hightlightSelected = (id) => {
   const resultsArr = Array.from(document.querySelectorAll('.results__link'));
   console.log(resultsArr);
@@ -39,7 +40,9 @@ const limiteRecipeTitle = (title, limit = 17) => {
 const renderRecipie = (recipe) => {
   const markup = `
     <li>
+
     <a class="results__link" href="#${recipe.recipe_id}">
+
         <figure class="results__fig">
             <img src="${recipe.image_url}" alt="${recipe.title}">
         </figure>

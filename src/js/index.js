@@ -7,14 +7,17 @@ import * as likesView from './views/likesView';
 import Recipe from './models/Recipe';
 import List from './models/List';
 import Likes from './models/Likes';
+
 /** Global state ofhe app
  * - Search object
  */
 const state = {};
 
+
 /**
  *  SEARCH CONTROLLER
  */
+
 const controlSearch = async () => {
   // 1- Get query from the view
   const query = SearchView.getInput();
@@ -38,6 +41,7 @@ const controlSearch = async () => {
     } catch (error) {
       clearLoader();
     }
+
   }
 };
 
@@ -48,13 +52,13 @@ elements.searchForm.addEventListener('submit', (e) => {
 
 elements.searchPagination.addEventListener('click', (e) => {
   const btn = e.target.closest('.btn-inline');
+
   if (btn) {
     const goToPage = parseInt(btn.dataset.goto, 10);
     SearchView.clearResults();
     SearchView.renderResults(state.search.results, goToPage);
   }
 });
-
 /**
  *  RECIPE CONTROLLER
  */
@@ -191,3 +195,4 @@ elements.recipe.addEventListener('click', (e) => {
     controlLike();
   }
 });
+
