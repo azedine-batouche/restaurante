@@ -7,14 +7,18 @@ import * as likesView from './views/likesView';
 import Recipe from './models/Recipe';
 import List from './models/List';
 import Likes from './models/Likes';
+
 /** Global state ofhe app
  * - Search object
  */
 const state = {};
 
+
 /**
  *  SEARCH CONTROLLER
  */
+
+
 const controlSearch = async () => {
   // 1- Get query from the view
   const query = SearchView.getInput();
@@ -38,6 +42,7 @@ const controlSearch = async () => {
     } catch (error) {
       clearLoader();
     }
+
   }
 };
 
@@ -48,13 +53,13 @@ elements.searchForm.addEventListener('submit', (e) => {
 
 elements.searchPagination.addEventListener('click', (e) => {
   const btn = e.target.closest('.btn-inline');
+
   if (btn) {
     const goToPage = parseInt(btn.dataset.goto, 10);
     SearchView.clearResults();
     SearchView.renderResults(state.search.results, goToPage);
   }
 });
-
 /**
  *  RECIPE CONTROLLER
  */
@@ -189,5 +194,35 @@ elements.recipe.addEventListener('click', (e) => {
     controlList();
   } else if (e.target.matches('.recipe__love, .recipe__love *')) {
     controlLike();
+  }
+});
+
+    // 3- Prepare UI for results
+    SearchView.clearInput();
+    SearchView.clearResults();
+
+    renderLoader(elements.searchResult);
+
+    // 4- Search for recipes
+    await state.search.getResults();
+
+    // 5- Render result
+    clearLoader();
+    SearchView.renderResults(state.search.results);
+  }
+};
+
+elements.searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  controlSearch();
+});
+
+elements.searchPagination.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-inline');
+  //console.log(e.target);
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    SearchView.clearResults();
+    SearchView.renderResults(state.search.results, goToPage);
   }
 });
