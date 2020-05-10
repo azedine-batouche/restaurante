@@ -23,6 +23,7 @@ export const hightlightSelected = (id) => {
     .classList.add('results__link--active');
 };
 
+
 const limiteRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
   if (title.length > 17) {
@@ -42,6 +43,7 @@ const renderRecipie = (recipe) => {
     <li>
 
     <a class="results__link" href="#${recipe.recipe_id}">
+
 
         <figure class="results__fig">
             <img src="${recipe.image_url}" alt="${recipe.title}">
