@@ -10,7 +10,7 @@ This project using html, css and javascript (ES6) to fetch the data from the ser
 
 # Demo
 
-To get the demo click of the website click here : [restaurante](https://batouche-dev.github.io/restaurante/) .
+To get the demo click of the website click here : [restaurante](https://azedine-batouche.github.io/restaurante/) .
 
 # Setup
 
